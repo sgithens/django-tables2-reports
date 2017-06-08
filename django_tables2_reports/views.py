@@ -31,7 +31,7 @@ class ReportTableView(SingleTableView):
         options = {}
         table_class = self.get_table_class()
         table = table_class(self.get_table_data(), **kwargs)
-        paginate = self.get_table_pagination()
+        paginate = self.get_table_pagination(table)
         if paginate is not None:
             options['paginate'] = paginate
         self.table_to_report = RequestConfigReport(self.request, **options).configure(table)
