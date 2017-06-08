@@ -3,7 +3,11 @@
 {% load i18n django_tables2 %}
 
 {% block pagination %}
+<div id="all-pagination-items">
     {{ block.super }}
+    {% with table.rows|length as count %}
+        <span> ( {{count}} rows )</span>
+    {% endwith %}
     {% block table.report %}
         {% if table.is_configured %}
             {% for label, format in table.formats %}
@@ -13,4 +17,5 @@
             {% endfor %}
         {% endif %}
     {% endblock table.report %}
+</div>
 {% endblock %}
